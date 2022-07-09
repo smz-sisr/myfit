@@ -1,2 +1,11 @@
 <h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<p>ユーザー詳細</p>
+
+<%= @user.name %>
+<% if @user.id == current_user.id %>
+<%= @user.email %>
+<% end %>
+<%= @user.height %>
+<%= @user.weight %>
+<%= link_to "編集", edit_user_path(@user) %>
+

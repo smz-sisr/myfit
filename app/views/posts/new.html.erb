@@ -1,6 +1,19 @@
 <h1>Posts#new</h1>
 <p>Find me in app/views/posts/new.html.erb</p>
 
-<% @posts.each do |post| %>
-<%= post.all %>
+<% form_for @post do |f| %>
+<%= f.labdl :date %>
+<%= f.date_field :date %>
+
+<%= f.labdl :meal_content %>
+<%= f.text_area :meal_content %>
+
+<%= f.labdl :training_content %>
+<%= f.text_area :training_content %>
+
+<%= f.labdl :weight %>
+<%= f.number_field :weight %>
+
+<%= f.submit %>
+
 <% end %>
