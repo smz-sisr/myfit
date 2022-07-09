@@ -10,5 +10,17 @@ class PostsController < ApplicationController
   end
 
   def create
+    @post = Post.new(post_params)
+    @post.user_id = current_user.id
+    @post.save
+    redirect_to post_path(@post)
+  end
+  
+  def edit
+  end
+  
+  private
+  def post_params
+    params.require(:post).permit(:date, :meal_content, :training_content, :weight)
   end
 end
