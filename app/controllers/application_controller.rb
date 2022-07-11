@@ -8,6 +8,6 @@ class ApplicationController < ActionController::Base
    end 
    
    def configure_account_update_parameters
-       devise_parameter_sanitizer.permit(:account_updaete, keys: [:name, :weight, :height, :comment]) 
+       devise_parameter_sanitizer.permit(:account_update, keys: [:name, :weight, :height, :comment]) 
    end
 end

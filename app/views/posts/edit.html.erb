@@ -1,0 +1,18 @@
+<h1>Post#edit</h1>
+
+<%= form_for @post do |f| %>
+<%= f.label :date %>
+<%= f.date_field :date %><br>
+
+<%= f.label :meal_content %>
+<%= f.text_area :meal_content %><br>
+
+<%= f.label :training_content %>
+<%= f.text_area :training_content %><br>
+
+<%= f.label :weight %>
+<%= f.number_field :weight %><br>
+
+<%= f.submit %>
+
+<% end %>

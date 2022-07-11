@@ -7,5 +7,25 @@
 <% end %>
 <%= @user.height %>
 <%= @user.weight %>
-<%= link_to "編集", edit_user_path(@user) %>
+<% if @user.id == current_user.id %>
+<%= link_to "プロフィール編集", edit_user_path(@user) %>
+<% end %>
+<br>
+<% @user.posts.each do |post|%>
+<%= post.date %>
 
+<%= post.meal_content %>
+
+<%= post.training_content %>
+
+<%= post.weight %>
+
+<% if @user.id == current_user.id %>
+<%= link_to "編集", edit_post_path(post) %>
+
+<%= link_to "削除", post_path(post), method: :delete, data: {confirm: "削除しますか？"} %>
+<% end %>
+
+<br>
+
+<% end %>
