@@ -1,14 +1,36 @@
 <h1>Posts#index</h1>
 <p>Find me in app/views/posts/index.html.erb</p>
 
+<div>
+    <%= form_tag(posts_path, method: "get") do %>
+    <%= label_tag :name, "性別" %>
+    <%= select_tag :gender, options_for_select(User.genders, {selected: params[:gender]}), include_blank: "すべて" %>
+    <%= label_tag :name, "年齢" %>
+    <%= select_tag :age, options_for_select([["20代", 20..30], ["30代", 30..40], ["40代", 40..50], ["50代", 50..60]], {selected: params[:age]}) , include_blank: "すべて" %>
+    <%= submit_tag "検索" %>
+    <% end %>
+</div>
+
 <% @posts.each do |post|%>
-<%= link_to user_path(post.user.id) do %>
+<%= link_to user_path(post.user) do %>
+<%= attachment_image_tag post.user, :icon_image, fallback: "no_image.png" %>
+<% end %>
+<%= link_to user_path(post.user) do %>
 <%= post.user.name %>
 <% end %>
+<%= post.user.age.to_s + "歳" %>
+<%= post.user.gender %>
 <%= post.date %>
 <%= post.meal_content %>
 <%= post.training_content %>
 <%= post.weight %>
+<div id="favorite_buttons_<%= post.id %>">
+　　　<%= render 'favorites/favorite', post: post %>
+</div>
+
+
 <%= link_to "詳細", post_path(post) %><br>
+
+
 
 <% end %>

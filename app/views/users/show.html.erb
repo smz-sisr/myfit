@@ -1,12 +1,16 @@
 <h1>Users#show</h1>
 <p>ユーザー詳細</p>
-
+<%= attachment_image_tag @user, :icon_image, fallback: "no_image.png" %>
 <%= @user.name %>
 <% if @user.id == current_user.id %>
 <%= @user.email %>
 <% end %>
+<%= @user.age.to_s + "歳" %>
+<%= @user.gender %>
 <%= @user.height %>
 <%= @user.weight %>
+
+
 <% if @user.id == current_user.id %>
 <%= link_to "プロフィール編集", edit_user_path(@user) %>
 <% end %>
@@ -19,6 +23,8 @@
 <%= post.training_content %>
 
 <%= post.weight %>
+
+いいね<%= post.favorites.count %>
 
 <% if @user.id == current_user.id %>
 <%= link_to "編集", edit_post_path(post) %>

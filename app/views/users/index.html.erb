@@ -2,9 +2,26 @@
 <p>ユーザー一覧</p>
 
 <div>
-<% @users.each do |user| %>
-<%= link_to user.name, user_path(user) %>
-<%= user.height %>
-<%= user.weight %><br>
-<% end %>
+    <%= form_tag(users_path, method: "get") do %>
+    <%= label_tag :name, "性別" %>
+    <%= select_tag :gender, options_for_select( User.genders, {selected: params[:gender]} ), include_blank: "すべて" %>
+    <%= label_tag :name, "年齢" %>
+    <%= select_tag :age, options_for_select([["20代", 20], ["30代", 30], ["40代", 40], ["50代", 50]], {selected: params[:age]}) , include_blank: "すべて" %>
+    <%= submit_tag "検索" %>
+    <% end %>
 </div>
+    <% @users.each do |user| %>
+        <%= link_to user_path(user) do %>
+        <%= attachment_image_tag user, :icon_image, fallback: "no_image.png" %>
+        <% end %>
+        <%= link_to user.name, user_path(user) %>
+        <%= user.age.to_s + "歳" %>
+        <%= user.gender %>
+        <%= user.height %>
+        <%= user.weight %>
+        投稿数:
+        <%= link_to user_path(user) do %>
+        <%= user.posts.count %><br>
+        <% end %>
+    <% end %>
+

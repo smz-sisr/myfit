@@ -3,10 +3,24 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
+  <div class="field">
+    <%= f.attachment_field :icon_image, autofocus: true %>
+  </div>
+  
   
   <div class="field">
     <%= f.label :ユーザーネーム %><br />
     <%= f.text_field :name, autofocus: true %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :年齢 %><br />
+    <%= f.text_field :age, autofocus: true %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :性別 %><br />
+    <%= f.select :gender, {'男性': 1, '女性': 2}, {selected: 1}, autofocus: true %>
   </div>
   
   <div class="field">
@@ -17,7 +31,7 @@
   
   <div class="field">
     <%= f.label :体重 %><br />
-    <%= f.email_field :weight, autofocus: true %>
+    <%= f.text_field :weight, autofocus: true %>
   </div>
   
   

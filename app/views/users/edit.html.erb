@@ -2,17 +2,28 @@
 <p>ユーザー情報変更</p>
 
 <%= form_for @user do |f|%>
+
+<%= f.attachment_field :icon_image %>
+
 <%= f.label :name %>
-<%= f.text_field :name %>
+<%= f.text_field :name %><br>
+
+ 
+<%= f.label :年齢 %>
+<%= f.text_field :age %><br>
+  
+<%= f.label :性別 %>
+<%= f.select :gender, {'男性': 1, '女性': 2} %><br>
+  
 
 <%= f.label :email %>
-<%= f.text_field :email %>
+<%= f.text_field :email %><br>
 
 <%= f.label :height %>
-<%= f.text_field :height %>
+<%= f.text_field :height %><br>
 
 <%= f.label :weight %>
-<%= f.text_field :weight %>
+<%= f.text_field :weight %><br>
 
 <%= f.submit %>
 
