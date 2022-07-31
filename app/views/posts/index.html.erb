@@ -6,7 +6,7 @@
     <%= label_tag :name, "性別" %>
     <%= select_tag :gender, options_for_select(User.genders, {selected: params[:gender]}), include_blank: "すべて" %>
     <%= label_tag :name, "年齢" %>
-    <%= select_tag :age, options_for_select([["20代", 20..30], ["30代", 30..40], ["40代", 40..50], ["50代", 50..60]], {selected: params[:age]}) , include_blank: "すべて" %>
+    <%= select_tag :age, options_for_select([["20代", 20], ["30代", 30], ["40代", 40], ["50代", 50]], {selected: params[:age]}) , include_blank: "すべて" %>
     <%= submit_tag "検索" %>
     <% end %>
 </div>
