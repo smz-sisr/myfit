@@ -1,5 +1,5 @@
-<h1>Users#show</h1>
-<p>ユーザー詳細</p>
+<h1>ユーザー詳細</h1>
+
 <%= attachment_image_tag @user, :icon_image, fallback: "no_image.png" %>
 <%= @user.name %>
 <% if @user.id == current_user.id %>
@@ -24,7 +24,9 @@
 
 <%= post.weight %>
 
-いいね<%= post.favorites.count %>
+<div id="favorite_buttons_<%= post.id %>">
+　　　<%= render 'favorites/favorite', post: post %>
+</div>
 
 <% if @user.id == current_user.id %>
 <%= link_to "編集", edit_post_path(post) %>

@@ -1,5 +1,5 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<h1>投稿詳細</h1>
+
 
 <%= link_to user_path(@post.user.id) do %>
 <%= attachment_image_tag @post.user, :icon_image, fallback: "no_image.png" %>
@@ -17,15 +17,23 @@
 
 <%= @post.weight %>
 
-<% if current_user.alredy_favorited?(@post) %>
-    <%= link_to 'いいね外す', post_favorites_path(@post), method: :delete %>
- <% else %>
-    <%= link_to 'いいね', post_favorites_path(@post), method: :post %>
-<% end %>
-<%= @post.favorites.count %>
+<div id="favorite_buttons_<%= @post.id %>">
+　　　<%= render 'favorites/favorite', post: @post %>
+</div>
+
 
 
 <% if @post.user.id == current_user.id %>
     <%= link_to "編集", edit_post_path(@post) %>
+<% end %>
+
+<% @comments.each do |comment| %>
+    <%= comment.comment_content %>
+<% end %>
+<%= form_for @comment do |f| %>
+    <%= f.label :comment_content %>
+    <%= f.text_area :comment_content %>
+    
+    <%= f.submit %>
 <% end %>
 

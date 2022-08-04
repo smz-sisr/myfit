@@ -1,19 +1,20 @@
-<h1>Posts#new</h1>
-<p>Find me in app/views/posts/new.html.erb</p>
+<h1>新規投稿</h1>
+
+
 
 <%= form_for @post do |f| %>
-<%= f.label :date %>
-<%= f.date_field :date %><br>
-
-<%= f.label :meal_content %>
-<%= f.text_area :meal_content %><br>
-
-<%= f.label :training_content %>
-<%= f.text_area :training_content %><br>
-
-<%= f.label :weight %>
-<%= f.number_field :weight %><br>
-
-<%= f.submit %>
+    <%= f.label :date %>
+    <%= f.date_field :date %><br>
+    
+    <%= f.label :meal_content %>
+    <%= f.text_area :meal_content %><br>
+    
+    <%= f.label :training_content %>
+    <%= f.text_area :training_content %><br>
+    
+    <%= f.label :weight %>
+    <%= f.number_field :weight %><br>
+    
+    <%= f.submit %>
 
 <% end %>

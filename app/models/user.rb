@@ -3,6 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_many :posts, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :comments
   
   
   devise :database_authenticatable, :registerable,
@@ -29,14 +30,6 @@ class User < ApplicationRecord
          def alredy_favorited?(post)
            self.favorites.exists?(post_id: post.id)
          end
-         
-         #def self.user_age_twenties
-         # users = User.where(age: 20...30)
-         #  return users.flatten
-         #end
-         #def self.user_age_thirties
-          # users = User.where(age: 30...40)
-         #  return users.flatten
-         #end
+       
 
 end
