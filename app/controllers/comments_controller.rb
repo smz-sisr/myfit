@@ -1,12 +1,31 @@
 class CommentsController < ApplicationController
     def create
-        @comment = current_user.comments.new(comment_params)
+        @post = Post.find(params[:post_id])
+      
+        @comment = @post.comments.new(comment_params)
+        @comment.user_id = current_user.id
+        
         if @comment.save
             redirect_back(fallback_location: root_path)
+            p "セーブされました"
         else
             redirect_back(fallback_location: root_path)
+            p "セーブされませんでした"
+        end
+    
+    end
+    
+    def destroy
+        @post = Post.find(params[:post_id])
+        comment = @post.comments.find(params[:id])
+        p comment
+        if comment.destroy
+        redirect_back(fallback_location: root_path)
+        p "削除"
         end
     end
+    
+   
     
     private
     def comment_params

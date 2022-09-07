@@ -28,12 +28,15 @@
 <% end %>
 
 <% @comments.each do |comment| %>
-    <%= comment.comment_content %>
+    <%= comment.comment_content %><br>
+    <% if current_user.id == comment.user.id %>
+    <%= link_to "削除", post_comments_path(post_id: @post.id, id: comment.id), method: :delete, data: {confirm: "削除しますか？"} %><br>
+    <% end %>
 <% end %>
-<%= form_for @comment do |f| %>
-    <%= f.label :comment_content %>
+<%= form_for [@post, @comment] do |f| %>
+    <%= f.label :コメント %>
     <%= f.text_area :comment_content %>
     
-    <%= f.submit %>
+    <%= f.submit 'コメントする' %>
 <% end %>
 
