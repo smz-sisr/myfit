@@ -1,3 +1,4 @@
+<div class="center">
 <h1>新規投稿</h1>
 
 
@@ -6,15 +7,16 @@
     <%= f.label :date %>
     <%= f.date_field :date %><br>
     
-    <%= f.label :meal_content %>
-    <%= f.text_area :meal_content %><br>
+    <%= f.label :食事内容 %><br>
+    <%= f.text_area :meal_content, class: "mgb10", :size=>"60x5" %><br>
     
-    <%= f.label :training_content %>
-    <%= f.text_area :training_content %><br>
+    <%= f.label :トレーニング内容 %><br>
+    <%= f.text_area :training_content, class: "mgb10", :size=>"60x5" %><br>
     
-    <%= f.label :weight %>
-    <%= f.number_field :weight %><br>
+    <%= f.label :体重 %>
+    <%= f.number_field :weight %> kg<br>
     
     <%= f.submit %>
 
 <% end %>
+</div>

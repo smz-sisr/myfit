@@ -9,13 +9,13 @@
     <%= @post.user.name %>
 <% end %>
 
-<%= @post.date %>
-
-<%= @post.meal_content %>
-
-<%= @post.training_content %>
-
-<%= @post.weight %>
+<%= @post.date %><br>
+【食事内容】<br>
+<div class="content"><%= @post.meal_content %></div>
+【トレーニング内容】<br>
+<div class="content"><%= @post.training_content %></div>
+【体重】<br>
+<div class="content"><%= @post.weight %></div>
 
 <div id="favorite_buttons_<%= @post.id %>">
 　　　<%= render 'favorites/favorite', post: @post %>
